@@ -2,7 +2,6 @@ $( document ).ready(function() {
   setStars();
   $('body').on( "mousemove", colourChange);
   $('body').on( "click", colourReset);
-
 });
 
 
@@ -11,7 +10,6 @@ colorsCSS = []
 setBluePercent = 70;
 bluePercent = 70;
 function colourChange() {
-  // new colours
   documentHeight = document.body.clientHeight;
   mousePosition = event.clientY;
   mousePositionPercentage = mousePosition / documentHeight * 100;
@@ -22,6 +20,12 @@ function colourChange() {
   // insert new colours
   colourInsert();
   updateStars();
+}
+
+function getMousePosition() {
+  documentHeight = document.body.clientHeight;
+  mousePosition = event.clientY;
+  mousePositionPercentage = mousePosition / documentHeight * 100;
 }
 
 function updateStars() {
@@ -57,8 +61,8 @@ function setStars() {
   for (var i = 0; i < stars.length; i++) {
     var top = Math.floor(Math.random() * (100 - 0)) + 0;
     var left = Math.floor(Math.random() * (100 - 0)) + 0;
-    console.log($('.star')[i])
     $($('.star')[i]).css("left", left + "%"); 
     $($('.star')[i]).css("top", top + "%"); 
   }
+  $('.star').css("opacity", 0);
 }
